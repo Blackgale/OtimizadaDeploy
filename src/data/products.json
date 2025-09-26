@@ -1,0 +1,50 @@
+[
+  {
+    "id": "p1",
+    "title": "Cozy Knit Sweater",
+    "price": 49.99,
+    "tag": "New",
+    "image": "https://images.unsplash.com/photo-1520975693415-29b6f2f48bea?q=80&w=1200&auto=format&fit=crop",
+    "category": "apparel"
+  },
+  {
+    "id": "p2",
+    "title": "Classic Denim Jeans",
+    "price": 39.99,
+    "tag": "Sale",
+    "image": "https://images.unsplash.com/photo-1514995428455-447d4443fa7f?q=80&w=1200&auto=format&fit=crop",
+    "category": "apparel"
+  },
+  {
+    "id": "p3",
+    "title": "Leather Ankle Boots",
+    "price": 79.99,
+    "tag": "Featured",
+    "image": "https://images.unsplash.com/photo-1582582621959-d19c8f3f0f66?q=80&w=1200&auto=format&fit=crop",
+    "category": "shoes"
+  },
+  {
+    "id": "p4",
+    "title": "Cotton T\u2011Shirt",
+    "price": 19.99,
+    "tag": "Trending",
+    "image": "https://images.unsplash.com/photo-1618354691243-c5d1f99d5ac3?q=80&w=1200&auto=format&fit=crop",
+    "category": "apparel"
+  },
+  {
+    "id": "p5",
+    "title": "Wireless Noise\u2011Canceling Headphones",
+    "price": 199.99,
+    "tag": "New",
+    "image": "https://images.unsplash.com/photo-1518443952243-8a1f1110b1b8?q=80&w=1200&auto=format&fit=crop",
+    "category": "electronics"
+  },
+  {
+    "id": "p6",
+    "title": "Classic Red Tee",
+    "price": 24.99,
+    "tag": "New",
+    "image": "https://images.unsplash.com/photo-1520975661595-6453be3f7070?q=80&w=1200&auto=format&fit=crop",
+    "category": "apparel"
+  }
+]

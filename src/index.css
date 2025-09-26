@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 255 255 255;
+  --fg: 17 24 39; /* gray-900 */
+  --card: 249 250 251; /* gray-50 */
+  --accent: 37 99 235; /* blue-600 */
+}
+
+.dark {
+  --bg: 17 24 39;
+  --fg: 243 244 246;
+  --card: 31 41 55;
+  --accent: 59 130 246;
+}
+
+body {
+  background-color: rgb(var(--bg));
+  color: rgb(var(--fg));
+}
+
+.btn {
+  @apply inline-flex items-center justify-center rounded-2xl px-4 py-2 text-sm font-medium shadow-sm transition;
+  background-color: rgb(var(--accent));
+  color: white;
+}
+.btn-secondary {
+  @apply inline-flex items-center justify-center rounded-2xl px-3 py-1.5 text-sm;
+  background-color: rgb(var(--card));
+  color: rgb(var(--fg));
+}
+.card {
+  @apply rounded-2xl border border-black/5 dark:border-white/10 bg-[rgb(var(--card))] p-4 shadow;
+}
+.input {
+  @apply w-full rounded-xl border border-black/10 dark:border-white/10 bg-transparent px-3 py-2 outline-none;
+}
+.badge {
+  @apply inline-flex items-center gap-2 rounded-full px-2.5 py-1 text-xs;
+  background-color: rgb(var(--card));
+}
+.link {
+  @apply underline underline-offset-4;
+}

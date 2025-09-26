@@ -1,0 +1,233 @@
+{
+  "p5": {
+    "summary": {
+      "avg": 4.5,
+      "total": 120,
+      "dist": {
+        "5": 40,
+        "4": 30,
+        "3": 15,
+        "2": 10,
+        "1": 5
+      }
+    },
+    "items": [
+      {
+        "id": "r1",
+        "author": "Ethan Carter",
+        "date": "2023-05-16",
+        "rating": 5,
+        "text": "Esses headphones são incríveis! O cancelamento de ruído é top e o som é cristalino.",
+        "likes": 25,
+        "replies": 3
+      },
+      {
+        "id": "r2",
+        "author": "Olivia Bennett",
+        "date": "2023-07-22",
+        "rating": 4,
+        "text": "Muito confortável e bateria impressionante. O som poderia ser um pouco mais encorpado.",
+        "likes": 18,
+        "replies": 2
+      },
+      {
+        "id": "r3",
+        "author": "Noah Thompson",
+        "date": "2023-06-09",
+        "rating": 3,
+        "text": "Bom produto, mas esperava mais pelos graves. O cancelamento de ruído é ok.",
+        "likes": 12,
+        "replies": 1
+      },
+      {
+        "id": "r4",
+        "author": "User 4",
+        "date": "2024-08-05",
+        "rating": 5,
+        "text": "Avaliação exemplo #4. Produto bom, comentários paginados para testes.",
+        "likes": 4,
+        "replies": 1
+      },
+      {
+        "id": "r5",
+        "author": "User 5",
+        "date": "2024-08-06",
+        "rating": 1,
+        "text": "Avaliação exemplo #5. Produto bom, comentários paginados para testes.",
+        "likes": 5,
+        "replies": 2
+      },
+      {
+        "id": "r6",
+        "author": "User 6",
+        "date": "2024-08-07",
+        "rating": 2,
+        "text": "Avaliação exemplo #6. Produto bom, comentários paginados para testes.",
+        "likes": 6,
+        "replies": 0
+      },
+      {
+        "id": "r7",
+        "author": "User 7",
+        "date": "2024-08-08",
+        "rating": 3,
+        "text": "Avaliação exemplo #7. Produto bom, comentários paginados para testes.",
+        "likes": 7,
+        "replies": 1
+      },
+      {
+        "id": "r8",
+        "author": "User 8",
+        "date": "2024-08-09",
+        "rating": 4,
+        "text": "Avaliação exemplo #8. Produto bom, comentários paginados para testes.",
+        "likes": 8,
+        "replies": 2
+      },
+      {
+        "id": "r9",
+        "author": "User 9",
+        "date": "2024-08-10",
+        "rating": 5,
+        "text": "Avaliação exemplo #9. Produto bom, comentários paginados para testes.",
+        "likes": 9,
+        "replies": 0
+      },
+      {
+        "id": "r10",
+        "author": "User 10",
+        "date": "2024-08-11",
+        "rating": 1,
+        "text": "Avaliação exemplo #10. Produto bom, comentários paginados para testes.",
+        "likes": 10,
+        "replies": 1
+      },
+      {
+        "id": "r11",
+        "author": "User 11",
+        "date": "2024-08-12",
+        "rating": 2,
+        "text": "Avaliação exemplo #11. Produto bom, comentários paginados para testes.",
+        "likes": 11,
+        "replies": 2
+      },
+      {
+        "id": "r12",
+        "author": "User 12",
+        "date": "2024-08-13",
+        "rating": 3,
+        "text": "Avaliação exemplo #12. Produto bom, comentários paginados para testes.",
+        "likes": 12,
+        "replies": 0
+      },
+      {
+        "id": "r13",
+        "author": "User 13",
+        "date": "2024-08-14",
+        "rating": 4,
+        "text": "Avaliação exemplo #13. Produto bom, comentários paginados para testes.",
+        "likes": 13,
+        "replies": 1
+      },
+      {
+        "id": "r14",
+        "author": "User 14",
+        "date": "2024-08-15",
+        "rating": 5,
+        "text": "Avaliação exemplo #14. Produto bom, comentários paginados para testes.",
+        "likes": 14,
+        "replies": 2
+      },
+      {
+        "id": "r15",
+        "author": "User 15",
+        "date": "2024-08-16",
+        "rating": 1,
+        "text": "Avaliação exemplo #15. Produto bom, comentários paginados para testes.",
+        "likes": 15,
+        "replies": 0
+      },
+      {
+        "id": "r16",
+        "author": "User 16",
+        "date": "2024-08-17",
+        "rating": 2,
+        "text": "Avaliação exemplo #16. Produto bom, comentários paginados para testes.",
+        "likes": 16,
+        "replies": 1
+      },
+      {
+        "id": "r17",
+        "author": "User 17",
+        "date": "2024-08-18",
+        "rating": 3,
+        "text": "Avaliação exemplo #17. Produto bom, comentários paginados para testes.",
+        "likes": 17,
+        "replies": 2
+      },
+      {
+        "id": "r18",
+        "author": "User 18",
+        "date": "2024-08-19",
+        "rating": 4,
+        "text": "Avaliação exemplo #18. Produto bom, comentários paginados para testes.",
+        "likes": 18,
+        "replies": 0
+      },
+      {
+        "id": "r19",
+        "author": "User 19",
+        "date": "2024-08-20",
+        "rating": 5,
+        "text": "Avaliação exemplo #19. Produto bom, comentários paginados para testes.",
+        "likes": 19,
+        "replies": 1
+      },
+      {
+        "id": "r20",
+        "author": "User 20",
+        "date": "2024-08-21",
+        "rating": 1,
+        "text": "Avaliação exemplo #20. Produto bom, comentários paginados para testes.",
+        "likes": 20,
+        "replies": 2
+      },
+      {
+        "id": "r21",
+        "author": "User 21",
+        "date": "2024-08-22",
+        "rating": 2,
+        "text": "Avaliação exemplo #21. Produto bom, comentários paginados para testes.",
+        "likes": 21,
+        "replies": 0
+      },
+      {
+        "id": "r22",
+        "author": "User 22",
+        "date": "2024-08-23",
+        "rating": 3,
+        "text": "Avaliação exemplo #22. Produto bom, comentários paginados para testes.",
+        "likes": 22,
+        "replies": 1
+      },
+      {
+        "id": "r23",
+        "author": "User 23",
+        "date": "2024-08-24",
+        "rating": 4,
+        "text": "Avaliação exemplo #23. Produto bom, comentários paginados para testes.",
+        "likes": 23,
+        "replies": 2
+      },
+      {
+        "id": "r24",
+        "author": "User 24",
+        "date": "2024-08-25",
+        "rating": 5,
+        "text": "Avaliação exemplo #24. Produto bom, comentários paginados para testes.",
+        "likes": 24,
+        "replies": 0
+      }
+    ]
+  }
+}
