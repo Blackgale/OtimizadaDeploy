@@ -39,8 +39,10 @@ body {
 }
 .badge {
   @apply inline-flex items-center gap-2 rounded-full px-2.5 py-1 text-xs;
+  @apply text-black;     
   background-color: rgb(var(--card));
 }
+
 .link {
   @apply underline underline-offset-4;
 }

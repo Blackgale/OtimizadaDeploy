@@ -4,7 +4,7 @@
     "title": "Cozy Knit Sweater",
     "price": 49.99,
     "tag": "New",
-    "image": "https://images.unsplash.com/photo-1520975693415-29b6f2f48bea?q=80&w=1200&auto=format&fit=crop",
+    "image": "/images/cozy.png",
     "category": "apparel"
   },
   {
@@ -20,7 +20,7 @@
     "title": "Leather Ankle Boots",
     "price": 79.99,
     "tag": "Featured",
-    "image": "https://images.unsplash.com/photo-1582582621959-d19c8f3f0f66?q=80&w=1200&auto=format&fit=crop",
+    "image": "/images/leather.jpg",
     "category": "shoes"
   },
   {

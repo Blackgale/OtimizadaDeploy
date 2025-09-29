@@ -20,7 +20,8 @@ export default function FilterChips({ categories, active, onChange, usage }: Pro
         return (
           <button
             key={c.key}
-            className={clsx('badge text-white', darker, active === c.key && 'ring-2 ring-blue-600')}
+            className={clsx('badge text-black', darker, active === c.key && 'ring-2 ring-blue-600')}
+
             onClick={() => onChange(c.key)}>
             {c.name}{count ? ` · ${count}` : ''}
           </button>
