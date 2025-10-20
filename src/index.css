@@ -46,3 +46,8 @@ body {
 .link {
   @apply underline underline-offset-4;
 }
+.badge {
+  @apply inline-flex items-center gap-2 rounded-full px-2.5 py-1 text-xs;
+  @apply text-black dark:text-white; /* letras pretas no claro, brancas no escuro */
+  background-color: rgb(var(--card));
+}
