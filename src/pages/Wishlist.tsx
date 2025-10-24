@@ -6,6 +6,7 @@ import ColorModal from '../components/ColorModal'
 import ImageReveal from '../components/ImageReveal'
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { track } from '../metrics/track'
 
 type Product = {
   id: string
@@ -21,13 +22,11 @@ export default function Wishlist() {
   const [filter, setFilter] = useState<'all' | string>('all')
   const [editId, setEditId] = useState<string | null>(null)
 
-  // contagem por cor para escurecer chips
   const usage = items.reduce<Record<string, number>>((acc, i) => {
     acc[i.color] = (acc[i.color] || 0) + 1
     return acc
   }, {})
 
-  // aplica filtro e junta com os dados dos produtos
   const list = useMemo(() => {
     const arr = (data as unknown as Product[])
     return items
@@ -52,19 +51,19 @@ export default function Wishlist() {
       />
 
       <div className="mt-2 space-y-3">
-        {list.length === 0 && (
-          <div className="opacity-70">Nada aqui ainda.</div>
-        )}
+        {list.length === 0 && <div className="opacity-70">Nada aqui ainda.</div>}
 
         {list.map(({ wish, product }) => {
-          // pega a primeira imagem (images[0]) ou image
           const firstImg =
             (product.images && product.images[0]) || product.image || ''
 
           return (
             <div className="card flex items-center gap-4" key={wish.productId}>
-              <Link to={`/product/${product.id}`} className="w-24 shrink-0">
-                {/* imagem carrega automaticamente */}
+              <Link
+                to={`/product/${product.id}`}
+                className="w-24 shrink-0"
+                onClick={() => track('open_product', { productId: product.id, from: 'wishlist' })}
+              >
                 <ImageReveal
                   src={firstImg}
                   alt={product.title}
@@ -77,6 +76,7 @@ export default function Wishlist() {
                 <Link
                   to={`/product/${product.id}`}
                   className="font-medium hover:underline"
+                  onClick={() => track('open_product', { productId: product.id, from: 'wishlist_title' })}
                 >
                   {product.title}
                 </Link>
