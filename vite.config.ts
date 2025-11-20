@@ -13,17 +13,13 @@ const metricsDevPlugin = () => ({
       req.on('end', () => {
         try {
           const evt = JSON.parse(body)
-          // se tiver ms, mostra também em segundos (s)
           if (typeof evt?.ms === 'number') {
             const s = +(evt.ms / 1000).toFixed(3)
-            // eslint-disable-next-line no-console
             console.log('[metrics:dev]', { ...evt, s })
           } else {
-            // eslint-disable-next-line no-console
             console.log('[metrics:dev]', evt)
           }
         } catch {
-          // eslint-disable-next-line no-console
           console.log('[metrics:dev:raw]', body)
         }
         res.statusCode = 204
@@ -35,4 +31,12 @@ const metricsDevPlugin = () => ({
 
 export default defineConfig({
   plugins: [react(), metricsDevPlugin()],
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://72.61.52.29:8080',
+        changeOrigin: true,
+      },
+    },
+  },
 })

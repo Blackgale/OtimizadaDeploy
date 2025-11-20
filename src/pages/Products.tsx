@@ -1,10 +1,16 @@
-import data from '../data/products.json'
 import ProductCard from '../components/ProductCard'
 import { screenshotPreset, pdfPreset } from '../utils/colors'
 import { useEffect, useState } from 'react'
 import { track } from '../metrics/track'
 import { metrics } from '../metrics/metrics'
 import { Link } from 'react-router-dom'
+
+type ApiProduct = {
+  id: string
+  name: string
+  price: number
+  imageUrl: string
+}
 
 type Product = {
   id: string
@@ -19,6 +25,10 @@ export default function Products() {
   const [preset, setPreset] = useState<'screenshot' | 'pdf'>('screenshot')
   const categories = preset === 'screenshot' ? screenshotPreset : pdfPreset
 
+  const [products, setProducts] = useState<Product[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
   // métricas de tela: marca render ao montar e encerra quando o browser fica "idle"
   useEffect(() => {
     track('view_products')
@@ -27,13 +37,12 @@ export default function Products() {
     const idle = (cb: () => void) => {
       const ric = (window as any).requestIdleCallback as
         | ((fn: () => void) => number)
-        | undefined;
+        | undefined
       if (ric) {
         const id = ric(cb)
         return () => {
           const cic = (window as any).cancelIdleCallback as
-            | ((id: number) => void)
-            | undefined;
+            | ((id: number) => void) | undefined
           if (cic) cic(id)
         }
       } else {
@@ -48,12 +57,47 @@ export default function Products() {
     return cleanup
   }, [])
 
+  // busca produtos da API
+  useEffect(() => {
+    async function fetchProducts() {
+      try {
+        const response = await fetch('/api/products') // via proxy do Vite
+        if (!response.ok) {
+          throw new Error('Failed to fetch products: ' + response.statusText)
+        }
+        const data: ApiProduct[] = await response.json()
+
+        const mapped: Product[] = data.map((p) => ({
+          id: p.id,
+          title: p.name,
+          price: p.price,
+          image: p.imageUrl,
+        }))
+
+        setProducts(mapped)
+      } catch (err: any) {
+        console.error(err)
+        setError(err.message || 'Failed to fetch products')
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchProducts()
+  }, [])
+
   const onChangePreset = (value: 'screenshot' | 'pdf') => {
     setPreset(value)
     track('change_preset', { to: value })
   }
 
-  const products = data as unknown as Product[]
+  if (loading) {
+    return <div className="p-4">Carregando produtos...</div>
+  }
+
+  if (error) {
+    return <div className="p-4 text-red-400">Erro: {error}</div>
+  }
 
   return (
     <div className="mx-auto max-w-6xl p-4 space-y-4">
@@ -65,21 +109,29 @@ export default function Products() {
             <select
               className="input max-w-[200px]"
               value={preset}
-              onChange={(e) => onChangePreset(e.target.value as 'screenshot' | 'pdf')}
+              onChange={(e) =>
+                onChangePreset(e.target.value as 'screenshot' | 'pdf')
+              }
             >
-              <option value="screenshot">Da imagem (Vermelho/Verde/Azul/...)</option>
+              <option value="screenshot">
+                Da imagem (Vermelho/Verde/Azul/…)
+              </option>
               <option value="pdf">Do PDF (Preciso Disso/Adorei!/…)</option>
             </select>
           </div>
 
-          {/* opcional: atalho para /ab se você criou a tela A/B */}
-          <Link to="/ab" className="btn-secondary">Comparar A/B</Link>
+          <Link to="/ab" className="btn-secondary">
+            Comparar A/B
+          </Link>
         </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {products.map((p) => (
-          <ProductCard key={p.id} p={p} categories={categories} />
+          // clicou no card → vai para /product/:id (detalhes + reviews)
+          <Link key={p.id} to={`/product/${p.id}`} className="block">
+            <ProductCard p={p} categories={categories} />
+          </Link>
         ))}
       </div>
     </div>

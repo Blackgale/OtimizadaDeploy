@@ -7,19 +7,41 @@ import { Link } from 'react-router-dom'
 import { Heart } from 'lucide-react'
 import { track } from '../metrics/track'
 
-type Product = { id:string; title:string; price:number; image?:string; images?:string[]; tag?:string }
+// agora aceita também name / imageUrl (da API)
+type Product = {
+  id: string
+  title?: string
+  name?: string
+  price: number
+  image?: string
+  imageUrl?: string
+  images?: string[]
+  tag?: string
+}
 
-export default function ProductCard({ p, categories }: { p: Product; categories: Category[] }) {
+export default function ProductCard({
+  p,
+  categories,
+}: {
+  p: Product
+  categories: Category[]
+}) {
   const [open, setOpen] = useState(false)
   const { items, add, remove } = useWishlist()
-  const saved = items.find(i => i.productId === p.id)
+  const saved = items.find((i) => i.productId === p.id)
+
+  const title = p.title ?? p.name ?? 'Produto'
 
   const imgs = useMemo<string[]>(() => {
     if (Array.isArray(p.images) && p.images.length) return p.images
-    return p.image ? [p.image] : []
+    if (p.image) return [p.image]
+    if (p.imageUrl) return [p.imageUrl]
+    return []
   }, [p])
 
-  const colorClass = saved ? (categories.find(c => c.key === saved.color)?.className ?? 'bg-gray-400') : 'bg-gray-300'
+  const colorClass = saved
+    ? categories.find((c) => c.key === saved.color)?.className ?? 'bg-gray-400'
+    : 'bg-gray-300'
 
   return (
     <div className="card">
@@ -27,22 +49,33 @@ export default function ProductCard({ p, categories }: { p: Product; categories:
         <Link
           to={`/product/${p.id}`}
           className="w-24 shrink-0"
-          onClick={() => track('open_product', { productId: p.id, from: 'grid' })}
+          onClick={() =>
+            track('open_product', { productId: p.id, from: 'grid' })
+          }
         >
-          <ImageReveal src={imgs[0]} alt={p.title} className="w-24" auto />
+          {imgs[0] && (
+            <ImageReveal src={imgs[0]} alt={title} className="w-24" auto />
+          )}
         </Link>
         <div className="flex-1">
           <div className="flex items-center justify-between">
             <Link
               to={`/product/${p.id}`}
               className="font-medium hover:underline"
-              onClick={() => track('open_product', { productId: p.id, from: 'title' })}
+              onClick={() =>
+                track('open_product', { productId: p.id, from: 'title' })
+              }
             >
-              {p.title}
+              {title}
             </Link>
             {p.tag && <span className="badge">{p.tag}</span>}
           </div>
-          <div className="text-sm opacity-80">${p.price.toFixed(2)}</div>
+          <div className="text-sm opacity-80">
+            {p.price.toLocaleString('pt-BR', {
+              style: 'currency',
+              currency: 'BRL',
+            })}
+          </div>
           <div className="mt-2 flex items-center gap-2">
             {!saved ? (
               <button
